@@ -1,12 +1,13 @@
 pipeline {
     agent any
-     options {
-        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
-        disableConcurrentBuilds()
-    }
     tools {
       maven 'maven-3'
     }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
+        disableConcurrentBuilds()
+    }
+   
     stages {
          stage('Checkout') { 
             steps {
