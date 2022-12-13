@@ -27,7 +27,7 @@ pipeline {
     }
     post {
         success {
-                archiveArtifacts artifacts: '/maven-pipeline-build/target/*.jar', followSymlinks: false
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
         }
     }  
 }
