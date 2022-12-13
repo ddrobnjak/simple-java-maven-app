@@ -8,7 +8,10 @@ pipeline {
         disableConcurrentBuilds()
     }
     stages {
-         stage('Clean up') { 
+        stage('Clone') {
+            git credentialsId: '4f8dcf06-a320-4afd-914d-d7fa62be287c', url: 'git@github.com:ddrobnjak/simple-java-maven-app.git'
+        }
+        stage('Clean up') { 
             steps {
                 deleteDir()
             }
