@@ -27,7 +27,6 @@ pipeline {
     }
     post {
         success {
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: true
-        }
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
     }  
 }
