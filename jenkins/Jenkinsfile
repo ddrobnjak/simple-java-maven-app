@@ -28,7 +28,7 @@ pipeline {
     post {
         success {
                 //archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                sh '$JENKINS_HOME/workspace/target/*.jar $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/ws'
+                sh 'cp $JENKINS_HOME/workspace/target/*.jar $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/ws'
         }
     }  
 }
