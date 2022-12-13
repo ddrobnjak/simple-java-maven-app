@@ -28,7 +28,7 @@ pipeline {
     post {
         always {
                 //archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                sh 'cp /var/lib/jenkins/workspace/maven-pipeline-build/target/my-app-1.0-SNAPSHOT.jar $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/ws'
+                sh 'cp /var/lib/jenkins/workspace/maven-pipeline-build/target/my-app-1.0-SNAPSHOT.jar $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/'
         }
     }  
 }
