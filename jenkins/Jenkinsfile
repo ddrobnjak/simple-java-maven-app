@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo "1-${params.BRANCH}"
                 echo "2-$params.BRANCH"
-                sh "mvn -B clean package -DskipTests -Dv=${params.BRANCH}"
+                sh "mvn -B clean package -DskipTests -Dbranch=${params.BRANCH}"
             }
         }
         
