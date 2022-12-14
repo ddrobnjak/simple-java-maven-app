@@ -21,11 +21,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "1-${env.GIT_BRANCH}"
-                echo "2-$env.GIT_BRANCH"
+                echo "1-${param.BRANCH}"
+                echo "2-$param.BRANCH"
                 echo '3-${BUILD_NUMBER}'
                 echo '4-$BUILD_NUMBER'
-                sh "mvn -B clean package -Dv=${param.TEST}"
+                sh "mvn -B clean package -Dv=${param.BRANCH}"
             }
         }
         
