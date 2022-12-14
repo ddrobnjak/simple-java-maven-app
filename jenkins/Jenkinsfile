@@ -25,7 +25,7 @@ pipeline {
                 echo "2-$params.BRANCH"
                 echo '3-${BUILD_NUMBER}'
                 echo '4-$BUILD_NUMBER'
-                sh "mvn -B clean package -Dv=${params.BRANCH}"
+                sh "mvn -B clean package -Dmaven.test.skip=true v=${params.BRANCH}"
             }
         }
         
