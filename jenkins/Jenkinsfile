@@ -25,7 +25,7 @@ pipeline {
                 echo "2-$env.GIT_BRANCH"
                 echo '3-${BUILD_NUMBER}'
                 echo '4-$BUILD_NUMBER'
-                sh "mvn -B clean package -Dv=${env.GIT_LOCAL_BRANCH}"
+                sh "mvn -B clean package -Dv=${param.TEST}"
             }
         }
         
