@@ -21,8 +21,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "1-${BUILD_NUMBER}"
-                echo "2-$BUILD_NUMBER"
+                echo "1-${GIT_BRANCH}"
+                echo "2-$GIT_BRANCH"
                 echo '3-${BUILD_NUMBER}'
                 echo '4-$BUILD_NUMBER'
                 sh "mvn -B clean package -Dv=${BUILD_NUMBER}"
