@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh """ sed -i -e "s/\\(<artifactId>\\)[^<]*\\(<\\/name>\\)/\\1sail-web-\"${branch}\"\\2/g" pom.xml """
+                sh """ sed -i -e "s/\\(<finalName>\\)[^<]*\\(<\\/finalName>\\)/\\1sail-web-\"${branch}\"\\2/g" pom.xml """
                 sh "mvn -B clean package -DskipTests -Dbranch=${params.BRANCH}"
             }
         }
