@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn -B clean package -Dv=$GIT_BRANCH'
+                sh "mvn -B clean package -Dv=${GIT_BRANCH}"
             }
         }
         
