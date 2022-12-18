@@ -5,7 +5,7 @@ COPY pom.xml /usr/src/app
 
 RUN mvn -f /usr/src/app/pom.xml clean package
 
-FROM java:8
+FROM openjdk:8
 
 COPY --from=builder /usr/src/app/target/my-app-1.0.jar /usr/app/my-app-1.0.jar
 
