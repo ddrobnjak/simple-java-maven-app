@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'docker build -t sample-maven .'
+                sh 'sudo docker build -t sample-maven .'
                 sh 'docker images'
             }
         }
