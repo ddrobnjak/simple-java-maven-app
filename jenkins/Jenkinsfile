@@ -4,7 +4,7 @@ pipeline {
         maven 'maven-3'
     }
     options {
-        buildDiscarder logRotator(numToKeepStr: '5')
+        buildDiscarder(logRotator(numToKeepStr: '5'))
         disableConcurrentBuilds()
         skipDefaultCheckout()
     }
