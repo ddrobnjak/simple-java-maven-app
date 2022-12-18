@@ -65,6 +65,5 @@
         </executions>
       </plugin>
     </plugins>
-    <finalName>dejan</finalName>
   </build>
 </project>
