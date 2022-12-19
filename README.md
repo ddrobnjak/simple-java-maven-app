@@ -14,6 +14,14 @@
 2) In Source Code Management section select **Git**, provide Repository URL and Credentials created in previous steps, and select which Branch to build
 3) In Build Steps choose **Invoke top-level Maven targets**, for Maven Version select Maven Installation created in previous steps and for Goals enter `clean package`
 4) **Save** changes and then click **Build now**
+
 ## 2 - Create Jenkins pipeline job for MVN project
+
+1) Go to **Jenkins Dashboard** and click **New Item**, enter Item Name and choose **Pipeline**
+2) Create Jenkinsfile on Repository and add pipeline code inside
+3) In Pipeline section select **Pipeline script from SCM** and choose **Git**
+4) Provide Repository URL and Credentials created in previous steps, and select which Branch to build and fill Script path with path to Jenkinsfile on Repository
+5) **Save** changes and click **Build now**
+
 
 ## 3 - Create multi-stage Docker file for MVN project
