@@ -26,6 +26,8 @@
 
 ## 3 - Create multi-stage Docker file for MVN project
 
+### Create Dockerfile
+
 1) Install docker on Jenkins host
 2) Create Dockerfile on Repository with following docker instructions
 
@@ -43,3 +45,11 @@ COPY --from=builder /usr/src/app/target/my-app-1.0.jar /usr/app/my-app-1.0.jar  
 
 ENTRYPOINT ["java", "-cp", "/usr/app/my-app-1.0.jar", "com.mycompany.app.App"]  //start app on docker container
 ```
+
+### Create Jenkins job
+   
+1) Create Jenkinsfile on Repository and add pipeline code inside
+2) Go to **Jenkins Dashboard** and click **New Item**, enter Item Name and choose **Pipeline**
+3) In Pipeline section select **Pipeline script from SCM** and choose **Git**
+4) Provide Repository URL and Credentials created in previous steps, and select which Branch to build and fill Script path with path to Jenkinsfile on Repository
+5) **Save** changes and click **Build now**
