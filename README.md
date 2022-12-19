@@ -25,3 +25,21 @@
 
 
 ## 3 - Create multi-stage Docker file for MVN project
+
+1) Install docker on Jenkins host
+2) Create Dockerfile on Repository with following docker instructions
+
+```
+FROM maven:3.5-jdk-8-alpine as builder                                          //choose base image for stage 1 (build)
+                                                      
+COPY src /usr/src/app/src                                                       //copy source and pom.xml file from workspace to container    
+COPY pom.xml /usr/src/app
+
+RUN mvn -f /usr/src/app/pom.xml clean package                                   //execute command to build maven project inside container
+
+FROM openjdk:8                                                                  //choose base image for stage 2
+  
+COPY --from=builder /usr/src/app/target/my-app-1.0.jar /usr/app/my-app-1.0.jar  //copy artifact from stage 1
+
+ENTRYPOINT ["java", "-cp", "/usr/app/my-app-1.0.jar", "com.mycompany.app.App"]  //start app on docker container
+```
