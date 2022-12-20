@@ -3,7 +3,6 @@ def changeName() {
         for file in \"${env.WORKSPACE}\"/target/*.jar
         do
             branch="test"
-            echo $branch
             basename=\${file%*.}\
             extension=\${file##.*}\
             
