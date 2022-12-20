@@ -1,6 +1,6 @@
 def changeName() {
   sh """
-        for file in \${env.WORKSPACE}\/target/*.jar
+        for file in \"${env.WORKSPACE}\"/target/*.jar
         do
             branch="test"
             echo $branch
