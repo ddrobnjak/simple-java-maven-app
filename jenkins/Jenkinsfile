@@ -3,8 +3,8 @@ def changeName() {
         for file in \\${env.WORKSPACE}\\/target/*.jar
         do
             branch="test"
-            basename=\${file%*.}\
-            extension=\${file##.*}\            
+            basename=\\${file%*.}\\
+            extension=\\${file##.*}\\            
             mv \$file \$basename-\$branch.\$extension
         done
    """
