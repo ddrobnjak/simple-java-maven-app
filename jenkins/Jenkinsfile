@@ -1,14 +1,3 @@
-def changeName() {
-  sh """
-        for file in ${env.WORKSPACE}/target/*.jar
-        do
-            branch="test"
-            basename="\${file%*.}"
-            extension="\${file##.*}"            
-            mv \$file \$basename-\$branch.\$extension
-        done
-   """
-}
 pipeline {
     agent any
     tools {
@@ -33,7 +22,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh "mvn -B clean package -DskipTests"
-                changeName()
             }
         }
         
