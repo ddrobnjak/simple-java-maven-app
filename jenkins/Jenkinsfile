@@ -18,7 +18,9 @@ pipeline {
             steps {
                 git credentialsId: '4f8dcf06-a320-4afd-914d-d7fa62be287c', url: 'git@github.com:ddrobnjak/simple-java-maven-app.git'
                 dir('subDirectory') {
-                    sh "git archive --remote=git@github.com:ddrobnjak/go-simple-app.git --prefix=main.go HEAD:main.go | tar xvf -"
+                    withCredentials {
+                        sh "git archive --remote=git@github.com:ddrobnjak/go-simple-app.git --prefix=main.go HEAD:main.go | tar xvf -"
+                    }
                 }
             }
         }
