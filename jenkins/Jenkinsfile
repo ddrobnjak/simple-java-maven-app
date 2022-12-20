@@ -17,8 +17,9 @@ pipeline {
         stage('Clone') {
             steps {
                 git credentialsId: '4f8dcf06-a320-4afd-914d-d7fa62be287c', url: 'git@github.com:ddrobnjak/simple-java-maven-app.git'
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'subDir']],
-                          userRemoteConfigs: [[credentialsId: '4f8dcf06-a320-4afd-914d-d7fa62be287c', url: 'git@github.com:ddrobnjak/go-simple-app.git']]])
+                dir('subDirectory') {
+                    git archive --remote=git@github.com:ddrobnjak/go-simple-app.git --prefix=main.go HEAD:main.go | tar xvf -
+                }
             }
         }
         stage('Build') {
