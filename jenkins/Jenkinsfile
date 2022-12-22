@@ -22,8 +22,10 @@ pipeline {
         stage('Build') {
             steps {
                 sh "mvn -B clean package -DskipTests"
-                def cause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
-                echo "userName: ${cause.userName}"        
+                script {
+                    def cause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
+                    echo "userName: ${cause.userName}"  
+                }                   
             }
         }
         
