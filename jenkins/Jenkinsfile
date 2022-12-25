@@ -8,6 +8,9 @@ pipeline {
         disableConcurrentBuilds()
         skipDefaultCheckout()
     }
+    environment {
+        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+    }
     stages {
         stage('Clean up') { 
             steps {
@@ -21,21 +24,18 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "mvn -B clean package -DskipTests"
-                script {
-                    def cause = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause')
-                    echo "userName: ${cause.userName}"  
-                }                   
+                sh "mvn -B clean package -DskipTests"                 
             }
         }
-        
+        stage('Upload artifact') {
+            steps {
+                sh 'jf rt upload --url http://3.238.146.222:8082/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
+            }
+        }
     }
     post {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-        }
-        always {
-            emailext body: 'A Test EMail', recipientProviders: requestor(), subject: 'Test'
         }
     }
 }
