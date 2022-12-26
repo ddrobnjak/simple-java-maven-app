@@ -36,6 +36,7 @@ pipeline {
     post {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                sh "echo $BUILD_URL/artifact/build/*zip*/*.zip"
         }
     }
 }
