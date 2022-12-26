@@ -42,7 +42,7 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
                 sh "echo RADI!!!:"
-                sh "echo ${env.JENKINS_URL}job/${env.JOB_NAME}/${env.BUILD_NUMBER}/artifact/target/my-app-1.0.jar"
+                sh "echo ${env.build_URL}/artifact/target/my-app-1.0.jar"
                 sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/artifact/target/*.jar"
             
         }
