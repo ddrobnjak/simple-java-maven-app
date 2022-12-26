@@ -31,6 +31,7 @@ pipeline {
             steps {
                 sh "echo skip"
                 //sh 'jf rt upload --url http://3.231.159.32:8082/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
+                 sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/target/my-app-1.0.jar"
             }
         }
     }
@@ -38,7 +39,7 @@ pipeline {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
-                sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/ws/target/my-app-1.0.jar"
+                sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/target/my-app-1.0.jar"
         }
     }
 }
