@@ -41,7 +41,10 @@ pipeline {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                 sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
+                sh "echo RADI!!!:
                 sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/artifact/target/my-app-1.0.jar"
+                sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/artifact/target/*.jar"
+            
         }
     }
 }
