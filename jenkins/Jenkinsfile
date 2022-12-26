@@ -37,7 +37,7 @@ pipeline {
     post {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-            sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/my-app-1.0.jar"
+            sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
         }
     }
 }
