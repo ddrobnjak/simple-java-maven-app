@@ -37,7 +37,6 @@ pipeline {
     post {
         success {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                PATH = "$JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/**/*.jar"
                 sh "echo $JENKINS_HOME/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/target/my-app-1.0.jar"
         }
     }
