@@ -29,22 +29,13 @@ pipeline {
         }
         stage('Upload artifact') {
             steps {
-                sh "echo skip"
-                //sh 'jf rt upload --url http://3.231.159.32:8082/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
-                 sh "echo ${JENKINS_URL}job/$JOB_NAME/archive/target/my-app-1.0.jar"
-                 sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
-                 sh "echo ${env.JENKINS_URL}job/${env.JOB_NAME}/ws/target/my-app-1.0.jar"
+                sh 'jf rt upload --url http://3.231.159.32:8082/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
             }
         }
     }
     post {
         success {
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                sh "echo ${JENKINS_URL}job/$JOB_NAME/lastSuccessfulBuild/artifact/target/my-app-1.0.jar"
-                sh "echo RADI!!!:"
-                sh "echo ${env.build_URL}/artifact/target/my-app-1.0.jar"
-                sh "echo ${JENKINS_URL}job/$JOB_NAME/$BUILD_NUMBER/artifact/target/*.jar"
-            
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false            
         }
     }
 }
