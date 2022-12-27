@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Upload artifact') {
             steps {
-                sh 'jf rt upload --url http://100.24.97.112:80/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world2/'
+                sh 'jf rt upload --url http://100.24.97.112:80/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
             }
         }
     }
