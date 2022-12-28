@@ -13,7 +13,8 @@ pipeline {
                 //sh 'docker images'
                 //sh "curl -I -k -v http://100.24.97.112:80/artifactory/api/system/ping"
                 sh "docker login -u ${env.ARTIFACTORY_CREDS_USR} -p ${env.ARTIFACTORY_CREDS_PSW} 100.24.97.112:80"
-                sh "docker push 100.24.97.112:80/docker-local:sample-maven"
+                sh "docker tag sample-maven 100.24.97.112:80/docker-virtual:latest"
+                sh "docker push 100.24.97.112:80/docker-virutal:latest"
                 
             }
         }
