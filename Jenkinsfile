@@ -4,7 +4,7 @@ pipeline {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')
     }
     environment {
-        ARTIFACTORY_PASS = credentials('artifactory-pass')
+        ARTIFACTORY_CREDS = credentials('artifactory-creds')
     }
     stages {
         stage('Build') { 
@@ -12,7 +12,7 @@ pipeline {
                 sh 'docker build -t sample-maven .'
                 //sh 'docker images'
                 //sh "curl -I -k -v http://100.24.97.112:80/artifactory/api/system/ping"
-                sh "docker login -u admin -p ${env.ARTIFACTORY_PASS} 100.24.97.112:80/artifactory"
+                sh "docker login -u $ARTIFACTORY_CREDS_USR -p $ARTIFACTORY_PASS_PSW 100.24.97.112:80/artifactory"
                 sh "docker tag sample-maven 100.24.97.112:80/artifactory/docker-virtual/java-hello-world:latest"
                 sh "docker push 100.24.97.112:80/artifactory/docker-virtual/java-hello-world"
                 
