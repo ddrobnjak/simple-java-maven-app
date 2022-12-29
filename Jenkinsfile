@@ -12,8 +12,6 @@ pipeline {
                 sh 'docker build -t sample-maven .'               
             }
         }
-    }
-    stages {
         stage('Upload image to Artifactory') { 
             steps {
                 sh "docker login -u ${env.ARTIFACTORY_CREDS_USR} -p ${env.ARTIFACTORY_CREDS_PSW} 100.24.97.112:80"
