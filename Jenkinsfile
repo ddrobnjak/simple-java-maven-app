@@ -7,12 +7,18 @@ pipeline {
         ARTIFACTORY_CREDS = credentials('artifactory-creds')
     }
     stages {
-        stage('Build') { 
+        stage('Build image') { 
             steps {
-                sh 'docker build -t sample-maven .'
+                sh 'docker build -t sample-maven .'               
+            }
+        }
+    }
+    stages {
+        stage('Upload image to Artifactory') { 
+            steps {
                 sh "docker login -u ${env.ARTIFACTORY_CREDS_USR} -p ${env.ARTIFACTORY_CREDS_PSW} 100.24.97.112:80"
-                sh "docker tag sample-maven:latest 100.24.97.112:80/docker-virtual/sample-maven:latest"
-                sh "docker push 100.24.97.112:80/docker-virtual/sample-maven:latest"
+                sh "docker tag sample-maven:latest 100.24.97.112:80/docker-local/sample-maven:latest"
+                sh "docker push 100.24.97.112:80/docker-local/sample-maven:latest"
                 
             }
         }
