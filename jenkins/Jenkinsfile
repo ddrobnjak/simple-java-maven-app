@@ -27,6 +27,11 @@ pipeline {
                 sh "mvn -B clean package"                 
             }
         }
+        stage('Sonar scan') {
+            steps {
+                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar"
+            }
+        }
         stage('Upload artifact') {
             steps {
                 sh 'jf rt upload --url http://3.218.249.109:80/artifactory --access-token ${ARTIFACTORY_ACCESS_TOKEN} target/*.jar java-hello-world/'
